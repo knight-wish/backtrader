@@ -1,0 +1,65 @@
+[project]
+name = "backtrader"
+dynamic = ["version"]
+description = "Python Backtesting library for trading strategies"
+authors = [
+    {name = "Daniel Rodriguez'", email="danjrod@gmail.com"},
+]
+license = {file = "LICENSE"}
+readme = "README.rst"
+requires-python = ">=3.2"
+
+keywords = ['trading', 'development']
+
+classifiers = [
+        # How mature is this project? Common values are
+        #   3 - Alpha
+        #   4 - Beta
+        #   5 - Production/Stable
+        'Development Status :: 5 - Production/Stable',
+
+        # Indicate who your project is intended for
+        'Intended Audience :: Developers',
+        'Intended Audience :: Financial and Insurance Industry',
+
+        # Indicate which Topics are covered by the package
+        'Topic :: Software Development',
+        'Topic :: Office/Business :: Financial',
+
+        # Specify the Python versions you support here. In particular, ensure
+        # that you indicate whether you support Python 2, Python 3 or both.
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+
+        # Operating Systems on which it runs
+        'Operating System :: OS Independent',
+]
+
+# Requirements: This is done differently by poetry!
+dependencies = [
+]
+
+[project.optional-dependencies]
+plotting = [
+    "matplotlib",
+]
+
+[project.urls]
+homepage = "https://github.com/mementum/backtrader"
+documentation = "https://www.backtrader.com/docu/"
+repository = "https://github.com/mementum/backtrader"
+
+[build-system]
+requires = [
+    "setuptools >= 35.0.2",
+    "setuptools_scm >= 2.0.0, <3"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = {attr = "backtrader.__version__"}
