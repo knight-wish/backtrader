@@ -29,6 +29,7 @@ which can be converted from/to dates
 import datetime
 import warnings
 
+from matplotlib import __version__ as matplotlib_version
 from matplotlib.dates import AutoDateLocator as ADLocator
 from matplotlib.dates import RRuleLocator as RRLocator
 from matplotlib.dates import AutoDateFormatter as ADFormatter
@@ -223,8 +224,15 @@ class AutoDateLocator(ADLocator):
 
         locator.set_axis(self.axis)
 
-        locator.set_view_interval(*self.axis.get_view_interval())
-        locator.set_data_interval(*self.axis.get_data_interval())
+        mpl_version_list = [int(i) for i in matplotlib_version.split(".")]
+        if mpl_version_list[0] > 3 \
+                or mpl_version_list[0] == 3 and mpl_version_list[1] >= 7:
+            locator.axis.set_view_interval(*self.axis.get_view_interval())
+            locator.axis.set_data_interval(*self.axis.get_data_interval())
+        else:
+            locator.set_view_interval(*self.axis.get_view_interval())
+            locator.set_data_interval(*self.axis.get_data_interval())
+
         return locator
 
 
